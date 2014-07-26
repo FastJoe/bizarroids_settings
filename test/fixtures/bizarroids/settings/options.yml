@@ -1,0 +1,5 @@
+string:
+  key: string_option
+  value_type: string
+  description: MyDescription
+  string_value: MyStringValue
