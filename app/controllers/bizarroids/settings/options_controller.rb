@@ -6,6 +6,10 @@ module Bizarroids::Settings
     inherit_resources
     actions :index, :edit, :update
 
+    if Bizarroids::Settings.use_cancancan
+      authorize_resource class: "Bizarroids::Settings::Option", param_method: :permitted_params
+    end
+
     def update
       update!(notice: t('bizarroids.settings.option_updated')) { options_url }
     end

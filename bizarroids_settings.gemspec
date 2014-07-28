@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.1.2"
   s.add_dependency "inherited_resources", "~> 1.5.0"
   s.add_dependency "simple_form", "~> 3.0.0"
+  s.add_dependency "cancancan", "~> 1.9.0"
 
   s.add_development_dependency "sqlite3"
 end

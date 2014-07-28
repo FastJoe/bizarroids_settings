@@ -1,3 +1,4 @@
+require 'cancancan'
 require 'inherited_resources'
 require 'simple_form'
 require 'bizarroids/settings/engine'
@@ -30,6 +31,9 @@ module Bizarroids
 
     mattr_accessor :parent_controller
     @@parent_controller = '::ApplicationController'
+
+    mattr_accessor :use_cancancan
+    @@use_cancancan = true
 
     def self.setup
       yield self
