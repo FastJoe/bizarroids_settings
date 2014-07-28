@@ -1,33 +1,60 @@
-= Bizarroids
+= Bizarroids Settings
+
+Flexible settings for Rails application. This is a part of The Bizarroids.
+
+== Installation
+
+Add it to your Gemfile:
+
+  gem 'bizarroids_settings'
+
+Run the following command to install it:
+
+  bundle install
+
+Run the generator:
+
+  rails generate bizarroids:settings:install
+
+== Configuraton
+
+Edit +config/initialisers/bizarroids_settings.rb+. You can create options using folowing syntax:
+
+  config.option :key, :string, value: 'MyString', other: :options
+
+Avaliable types:
+
+- string
+- integer
+- float
+- boolean
+- text
+- date
+- datetime
+- file (not implemented yet)
+
+Avaliable options:
+
+* name - gives user readable name to the option. It would be show in admin panel.
+* description - description to show in admin panel.
+* require - if set true, prevents user to set empty value.
+* hidden - if set true, hides option from user in admin panel.
+* collection - (+collection: [1, 2, 3]+) forses user to select given values instead of enter in input field.
+
+Some additional configuration can be found +config/initialisers/bizarroids_settings.rb+
 
 == Usage
 
-get Bizarroids::Settings.get(:key) or Bizarroids::Settings[:key]
+To get value for :key
 
-initialiser
+Get:
 
-Bizarroids::Settings.setup do |config|
-  # avaliable option types
-  config.option :string_option, :string, value: 'MyString'
-  config.option :integer_option, :integer, value: 0
-  config.option :float_option, :float, value: 0.0
-  config.option :boolean_option, :boolean, value: true
-  config.option :text_option, :text
+  Bizarroids::Settings.get(:key)
+  Bizarroids::Settings[:key]
 
-  # comming soon
-  # config.option :file_option, :file
+Set:
 
-  # this type suggest user a collection of values to choose from
-  config.option :collection_option, :collection, collection: %w(white red black)
-
-  # this option will not be visible by user
-  config.option :hidden_option, :string, value: 'MyString', hidden: true
-
-  # option with required value. prevent user to set empty value
-  config.option :required_option, :string, value: 'MyString', required: true
-
-  # description and human readable name can be set
-  config.option :user_friendly_option, :string, value: 'MyString', name: 'User friendly', description: 'Option for user'
-end
+  Bizarroids::Settings.get(:key) = 'my value'
+  Bizarroids::Settings[:key] = 'my value'
 
 This project rocks and uses MIT-LICENSE.

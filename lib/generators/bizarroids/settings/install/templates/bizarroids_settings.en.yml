@@ -1,0 +1,26 @@
+en:
+  activerecord:
+    models:
+      bizarroids/settings/option:
+        one: Option
+        many: Options
+    attributes:
+      bizarroids/settings/option:
+        name: Name
+        value_type: Type
+        value: Value
+
+  bizarroids:
+    settings:
+      option_updated: Option updated
+      types:
+        string: String
+        integer: Integer
+        float: Float
+        boolean: Boolean
+        text: Text
+        date: Date
+        datetime: Date and Time
+        file: File
+    cancel: Cancel
+    save: Save

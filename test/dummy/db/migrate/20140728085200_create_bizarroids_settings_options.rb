@@ -17,8 +17,8 @@ class CreateBizarroidsSettingsOptions < ActiveRecord::Migration
       t.float :float_value
       t.boolean :boolean_value, default: false
       t.text :text_value
-      t.text :date_value
-      t.text :datetime_value
+      t.date :date_value
+      t.datetime :datetime_value
       # t.file :file_value
 
       t.timestamps

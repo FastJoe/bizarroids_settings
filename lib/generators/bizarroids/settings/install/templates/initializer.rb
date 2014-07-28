@@ -6,6 +6,7 @@ Bizarroids::Settings.setup do |config|
   # config.option :boolean_option, :boolean, value: true
   # config.option :date_option, :date, value: Date.today
   # config.option :datetime_option, :datetime, value: Time.now
+  # config.option :text_option, :text
 
   # coming soon
   # config.option :file_option, :file
@@ -22,4 +23,8 @@ Bizarroids::Settings.setup do |config|
 
   # description and human readable name can be set
   # config.option :user_friendly_option, :string, value: 'MyString', name: 'User friendly', description: 'Option for user'
+
+  # The parent controller all Settings controllers inherits from.
+  # Defaults to ApplicationController. This should be set to a string.
+  config.parent_controller = '::ApplicationController'
 end

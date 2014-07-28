@@ -1,0 +1,26 @@
+ru:
+  activerecord:
+    models:
+      bizarroids/settings/option:
+        one: Настройка
+        many: Настройки
+    attributes:
+      bizarroids/settings/option:
+        name: Название
+        value_type: Тип
+        value: Значение
+
+  bizarroids:
+    settings:
+      option_updated: Настройка обновлена
+      types:
+        string: Строка
+        integer: Целое число
+        float: Вещественное число
+        boolean: Логическое
+        text: Текстовое
+        date: Дата
+        datetime: Дата и время
+        file: Файл
+    cancel: Отмена
+    save: Сохранить

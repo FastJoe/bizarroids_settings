@@ -1,9 +1,11 @@
+require 'inherited_resources'
+require 'simple_form'
 require 'bizarroids/settings/engine'
 require 'bizarroids/settings/config_error'
 
 module Bizarroids
   module Settings
-    VALUE_TYPES = %w(string integer float boolean text date datetime file)
+    VALUE_TYPES = %w(string integer float boolean text date datetime file).freeze
 
     def self.get key
       raise ActiveRecord::RecordNotFound.new("Option ':#{key}' not defined") unless key.in? keys
@@ -25,6 +27,9 @@ module Bizarroids
 
     mattr_accessor :keys
     @@keys = []
+
+    mattr_accessor :parent_controller
+    @@parent_controller = '::ApplicationController'
 
     def self.setup
       yield self
@@ -83,19 +88,19 @@ module Bizarroids
     end
 
     def self.attrs_for_create key, type, attrs
-      attrs.merge(key: key, value_type: type).slice *valid_attrs
+      attrs.merge(key: key, value_type: type).slice *valid_attr_names
     end
 
     def self.attrs_for_update attrs
-      attrs.slice *auto_updete_attrs
+      attrs.slice *auto_update_attr_names
     end
 
-    def self.auto_updete_attrs
+    def self.auto_update_attr_names
       %i(name description required hidden collection position)
     end
 
-    def self.valid_attrs
-      auto_updete_attrs + %i(key value_type value)
+    def self.valid_attr_names
+      auto_update_attr_names + %i(key value_type value)
     end
   end
 end

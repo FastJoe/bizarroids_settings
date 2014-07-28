@@ -1,0 +1,36 @@
+<table class='table table-bordered table-striped'>
+  <thead>
+    <tr>
+      <% %i(name value_type value).each do |attr_name| %>
+        <th><%= resource_class.human_attribute_name(attr_name) %></th>
+      <% end %>
+      <th>&nbsp;</th>
+    </tr>
+  <thead>
+  <tbody>
+    <% @options.each do |option| %>
+      <tr>
+        <td>
+          <%= link_to option.human_name, [:edit, option] %>
+          <% if option.description.present? %>
+            <br/><em>option.description</em>
+          <% end %>
+        </td>
+        <td><%= option.human_type %></td>
+        <td>
+          <% if option.get_value.present? %>
+            <% case option.value_type %>
+            <% when 'date', 'datetime' %>
+              <%= l option.get_value, format: :long %>
+            <% else %>
+              <%= option.get_value %>
+            <% end %>
+          <% else %>
+            <em>Not set</em>
+          <% end %>
+        <td>
+        <td class='text-right'><%= edit_button option %><td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

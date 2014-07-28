@@ -6,14 +6,24 @@ module Bizarroids::Settings
 
     scope :visible, -> { where hidden: false }
     scope :actual, -> { where key: Bizarroids::Settings.keys }
+    scope :user_editable, -> { actual.visible }
     scope :default_order, -> { order :position }
+    default_scope -> { default_order }
+
+    def to_param
+      key
+    end
+
+    def active_attr
+      :"#{value_type}_value"
+    end
 
     def get_value
       case value_type
       when 'file'
         NotImplementedError
       else
-        self[:"#{value_type}_value"]
+        self[active_attr]
       end
     end
 
@@ -25,16 +35,26 @@ module Bizarroids::Settings
       Bizarroids::Settings.options[key.to_sym][:collection]
     end
 
+    def human_name
+      name || key.humanize
+    end
+
+    def human_type
+      I18n.t value_type, scope: 'bizarroids.settings.types'
+    end
+
     attr_accessor :value
 
     before_validation do
       self.value_type = self.value_type.to_s
 
-      case value_type
-      when 'file'
-        raise NotImplementedError
-      else
-        send :"#{value_type}_value=", self.value
+      if value.present?
+        case value_type
+        when 'file'
+          raise NotImplementedError
+        else
+          send :"#{active_attr}=", self.value
+        end
       end
     end
   end

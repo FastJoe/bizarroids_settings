@@ -11,4 +11,13 @@ class Bizarroids::Settings::InstallGenerator < Rails::Generators::Base
   def create_initalizer
     initializer 'bizarroids_settings.rb', File.read(File.join(self.class.source_root, 'initializer.rb'))
   end
+
+  def add_route
+    route "mount Bizarroids::Settings::Engine => '/admin'"
+  end
+
+  def copy_translation_files
+    copy_file "bizarroids_settings.en.yml", "config/locales/bizarroids_settings.en.yml"
+    copy_file "bizarroids_settings.ru.yml", "config/locales/bizarroids_settings.ru.yml"
+  end
 end

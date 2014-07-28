@@ -1,4 +1,4 @@
 module Bizarroids::Settings
-  class ApplicationController < ActionController::Base
+  class ApplicationController < parent_controller.constantize
   end
 end
