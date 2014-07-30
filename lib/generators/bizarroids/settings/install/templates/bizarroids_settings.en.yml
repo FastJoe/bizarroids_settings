@@ -3,7 +3,7 @@ en:
     models:
       bizarroids/settings/option:
         one: Option
-        many: Options
+        other: Options
     attributes:
       bizarroids/settings/option:
         name: Name

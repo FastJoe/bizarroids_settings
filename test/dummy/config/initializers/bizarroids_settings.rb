@@ -26,7 +26,7 @@ Bizarroids::Settings.setup do |config|
 
   # The parent controller all Settings controllers inherits from.
   # Defaults to ApplicationController. This should be set to a string.
-  config.parent_controller = '::ApplicationController'
+  config.parent_controller = 'ApplicationController'
 
   # disable cancancan
   config.use_cancancan = true

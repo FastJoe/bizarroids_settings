@@ -31,6 +31,17 @@ class ActiveSupport::TestCase
     end
   end
 
+  def create_string_collection_option
+    clean_options
+    Bizarroids::Settings.setup do |config|
+      config.option :string_collection_option, :string, {
+        required: false,
+        value: 'MyStringValue',
+        collection: %w(MyStringValue MyStringValue1 MyStringValue2)
+      }
+    end
+  end
+
   fixture_path = File.expand_path("../fixtures", __FILE__)
   fixtures :all
 end

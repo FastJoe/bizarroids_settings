@@ -45,6 +45,18 @@ Some additional configuration can be found +config/initialisers/bizarroids_setti
 
 == Usage
 
+Link for admin panel
+
+  bizarroids_settings_menu_link
+
+If you use cancancan place in your ability.rb somthing like
+
+  can :manage, Bizarroids::Settings::Option
+
+if don't, place in config/initialisers/bizarroids_settings.rb
+
+  config.use_cancancan = false
+
 To get value for :key
 
 Get:
@@ -56,5 +68,10 @@ Set:
 
   Bizarroids::Settings.get(:key) = 'my value'
   Bizarroids::Settings[:key] = 'my value'
+
+== TODO
+
+* File option type
+* Tests
 
 This project rocks and uses MIT-LICENSE.

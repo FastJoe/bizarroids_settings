@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<h1>Menu</h1>
+<ul>
+  <li class="<%= controller.kind_of?(HomeController) ? 'active' : nil %>"><%= link_to 'Home', main_app.root_url%></li>
+  <%= bizarroids_settings_menu_link %>
+</ul>
+
 <%= yield %>
 
 </body>

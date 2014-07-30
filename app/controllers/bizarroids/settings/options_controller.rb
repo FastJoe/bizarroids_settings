@@ -1,7 +1,9 @@
 require_dependency "bizarroids/settings/application_controller"
 
 module Bizarroids::Settings
-  class OptionsController < ApplicationController
+  class OptionsController < parent_controller.constantize
+    helper 'bizarroids/settings/options'
+
     respond_to :html
     inherit_resources
     actions :index, :edit, :update

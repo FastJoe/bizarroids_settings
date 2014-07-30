@@ -1,6 +1,8 @@
 require 'cancancan'
 require 'inherited_resources'
 require 'simple_form'
+
+require 'bizarroids/settings/helpers/settings_helper'
 require 'bizarroids/settings/engine'
 require 'bizarroids/settings/config_error'
 
