@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728085200) do
+ActiveRecord::Schema.define(version: 20140731121008) do
 
   create_table "bizarroids_settings_options", force: true do |t|
     t.string   "key"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140728085200) do
     t.text     "text_value"
     t.date     "date_value"
     t.datetime "datetime_value"
+    t.string   "file_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

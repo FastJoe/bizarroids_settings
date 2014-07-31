@@ -9,7 +9,7 @@ Bizarroids::Settings.setup do |config|
   config.option :text_option, :text
 
   # coming soon
-  # config.option :file_option, :file
+  config.option :file_option, :file, extension_white_list: %w(jpg jpeg png gif)
 
   # collection option suggests user an array of values to choose from
   config.option :string_collection, :string, collection: %w(white red black)
@@ -26,6 +26,9 @@ Bizarroids::Settings.setup do |config|
 
   # set custom class to admin panel input (to enable wysiwyg or something like this)
   config.option :text_option_with_class, :text, input_class: [:tinymce, :huge_text_field]
+
+  # directory where uploaded files will be stored.
+  config.files_storage_dir = 'system/settings'
 
   # The parent controller all Settings controllers inherits from.
   # Defaults to ApplicationController. This should be set to a string.

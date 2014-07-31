@@ -22,6 +22,8 @@
             <% case option.value_type %>
             <% when 'date', 'datetime' %>
               <%= l option.get_value, format: :long %>
+            <% when 'file' %>
+              <%= link_to h(truncate(File.basename(option.get_value.path), length: 30)), option.get_value.url, target: :_blank %>
             <% else %>
               <%= option.get_value %>
             <% end %>

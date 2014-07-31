@@ -1,10 +1,13 @@
 require 'cancancan'
 require 'inherited_resources'
 require 'simple_form'
+require 'mini_magick'
+require 'carrierwave'
 
 require 'bizarroids/settings/helpers/settings_helper'
 require 'bizarroids/settings/engine'
 require 'bizarroids/settings/config_error'
+require 'bizarroids/settings/bizarroids_settings_option_uploader'
 
 module Bizarroids
   module Settings
@@ -36,6 +39,9 @@ module Bizarroids
 
     mattr_accessor :use_cancancan
     @@use_cancancan = true
+
+    mattr_accessor :files_storage_dir
+    @@files_storage_dir = 'system/settings'
 
     def self.setup
       yield self

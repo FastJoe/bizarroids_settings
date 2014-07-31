@@ -31,7 +31,7 @@ Avaliable types:
 - text
 - date
 - datetime
-- file (not implemented yet)
+- file
 
 Avaliable options:
 
@@ -71,7 +71,7 @@ Set:
 
 == TODO
 
-* File option type
+* image styles for file field
 * Tests
 
 This project rocks and uses MIT-LICENSE.

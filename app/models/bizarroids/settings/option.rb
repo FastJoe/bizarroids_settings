@@ -4,6 +4,8 @@ module Bizarroids::Settings
     validates :value_type, presence: true, inclusion: { in: Bizarroids::Settings::VALUE_TYPES }
     validates_presence_of :value, if: :required?
 
+    mount_uploader :file_value, ::Bizarroids::Settings::OptionUploader
+
     scope :visible, -> { where hidden: false }
     scope :actual, -> { where key: Bizarroids::Settings.keys }
     scope :user_editable, -> { actual.visible }
@@ -14,17 +16,16 @@ module Bizarroids::Settings
       key
     end
 
+    def sym_key
+      key.to_sym
+    end
+
     def active_attr
       :"#{value_type}_value"
     end
 
     def get_value
-      case value_type
-      when 'file'
-        NotImplementedError
-      else
-        self[active_attr]
-      end
+      send active_attr
     end
 
     def set_value val
@@ -32,7 +33,7 @@ module Bizarroids::Settings
     end
 
     def avaliable_values
-      Bizarroids::Settings.options[key.to_sym][:collection]
+      Bizarroids::Settings.options[sym_key][:collection]
     end
 
     def human_name
@@ -49,12 +50,7 @@ module Bizarroids::Settings
       self.value_type = self.value_type.to_s
 
       if value.present?
-        case value_type
-        when 'file'
-          raise NotImplementedError
-        else
-          send :"#{active_attr}=", self.value
-        end
+        send :"#{active_attr}=", self.value
       end
     end
   end

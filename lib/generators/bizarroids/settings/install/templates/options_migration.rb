@@ -19,7 +19,7 @@ class CreateBizarroidsSettingsOptions < ActiveRecord::Migration
       t.text :text_value
       t.date :date_value
       t.datetime :datetime_value
-      # t.file :file_value
+      t.string :file_value
 
       t.timestamps
     end
