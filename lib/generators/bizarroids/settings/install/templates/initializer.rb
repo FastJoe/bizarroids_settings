@@ -24,6 +24,9 @@ Bizarroids::Settings.setup do |config|
   # description and human readable name can be set
   # config.option :user_friendly_option, :string, value: 'MyString', name: 'User friendly', description: 'Option for user'
 
+  # set custom class to admin panel input (to enable wysiwyg or something like this)
+  config.option :text_option_with_class, :text, input_class: [:tinymce, :huge_text_field]
+
   # The parent controller all Settings controllers inherits from.
   # Defaults to ApplicationController. This should be set to a string.
   config.parent_controller = '::ApplicationController'
