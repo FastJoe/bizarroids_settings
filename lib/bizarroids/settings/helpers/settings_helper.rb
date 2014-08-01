@@ -11,9 +11,17 @@ module Bizarroids::Settings
     end
 
     def bizarroids_settings_menu_link
-      content_tag :li, class: (controller.kind_of?(Bizarroids::Settings::OptionsController) ? :active : nil) do
-        link_to Bizarroids::Settings::Option.model_name.human(count: 10), bizarroids_settings.options_path
-      end
+      link_to Bizarroids::Settings::Option.model_name.human(count: 10),
+        bizarroids_settings.options_path,
+        class: bizarroids_settings_menu_link_class
+    end
+
+    def bizarroids_settings_menu_link_class
+      bizarroids_settings_menu_link_active? ? :active : nil
+    end
+
+    def bizarroids_settings_menu_link_active?
+      controller.kind_of?(Bizarroids::Settings::OptionsController)
     end
   end
 end
