@@ -13,7 +13,7 @@ module Bizarroids::Settings
     end
 
     def update
-      update!(notice: t('bizarroids.settings.option_updated')) { options_url }
+      update!(notice: t('bizarroids.settings.option_updated')) { bizarroids_settings_engine.options_url }
     end
 
     protected
@@ -27,7 +27,7 @@ module Bizarroids::Settings
     end
 
     def permitted_params
-      params.permit(option: Bizarroids::Settings::VALUE_TYPES.map {|x| :"#{x}_value"})
+      params.permit(bizarroids_settings_option: Bizarroids::Settings::VALUE_TYPES.map {|x| :"#{x}_value"})
     end
   end
 end

@@ -3,6 +3,7 @@ module Bizarroids::Settings::OptionsHelper
     key = @option.sym_key
     {
       label: @option.human_name,
+      required: @option.required,
       input_html: { class: Bizarroids::Settings.options[key][:input_class] },
       collection: @option.collection? ? bizarroids_settings_select_collection(key) : nil
     }.merge custom_options

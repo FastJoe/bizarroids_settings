@@ -11,9 +11,9 @@ module Bizarroids::Settings
     end
 
     def bizarroids_settings_menu_link
-      link_to Bizarroids::Settings::Option.model_name.human(count: 10),
+      link_to bizarroids_t('settings.name'),
         bizarroids_settings_engine.options_path,
-        class: bizarroids_settings_menu_link_class
+        class: [bizarroids_settings_menu_link_class, 'list-group-item']
     end
 
     def bizarroids_settings_menu_link_class

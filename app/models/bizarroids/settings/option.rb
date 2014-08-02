@@ -2,9 +2,17 @@ module Bizarroids::Settings
   class Option < ActiveRecord::Base
     validates :key, presence: true, uniqueness: true
     validates :value_type, presence: true, inclusion: { in: Bizarroids::Settings::VALUE_TYPES }
-    validates_presence_of :value, if: :required?
 
     mount_uploader :file_value, ::Bizarroids::Settings::OptionUploader
+
+    def self.active_attr attr_name
+      :"#{attr_name}_value"
+    end
+
+    Bizarroids::Settings::VALUE_TYPES.each do |type|
+      # validates :string_value, presence: true, if: "value_type == 'string' && required?"
+      validates self.active_attr(type), presence: true, if: "value_type == '#{type}' && required?"
+    end
 
     scope :visible, -> { where hidden: false }
     scope :actual, -> { where key: Bizarroids::Settings.keys }
@@ -21,7 +29,7 @@ module Bizarroids::Settings
     end
 
     def active_attr
-      :"#{value_type}_value"
+      self.class.active_attr value_type
     end
 
     def get_value

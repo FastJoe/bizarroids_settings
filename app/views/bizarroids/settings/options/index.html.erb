@@ -1,3 +1,7 @@
+<%= content_for :page_header do %>
+  <h1><%= bizarroids_t 'settings.name' %></h1>
+<% end %>
+
 <table class='table table-bordered table-striped'>
   <thead>
     <tr>
@@ -6,14 +10,14 @@
       <% end %>
       <th>&nbsp;</th>
     </tr>
-  <thead>
+  </thead>
   <tbody>
     <% @options.each do |option| %>
       <tr>
         <td>
-          <%= link_to option.human_name, [:edit, option] %>
+          <%= link_to option.human_name, bizarroids_settings_engine.edit_option_path(option) %>
           <% if option.description.present? %>
-            <br/><em>option.description</em>
+            <br/><em><%= option.description %></em>
           <% end %>
         </td>
         <td><%= option.human_type %></td>
@@ -30,8 +34,8 @@
           <% else %>
             <em>Not set</em>
           <% end %>
-        <td>
-        <td class='text-right'><%= bizarroids_edit_button option %><td>
+        </td>
+        <td class='text-right'><%= bizarroids_edit_button bizarroids_settings_engine.edit_option_path(option) %></td>
       </tr>
     <% end %>
   </tbody>

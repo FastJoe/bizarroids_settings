@@ -24,7 +24,7 @@ module Bizarroids::Settings
       option = Option.create key: :test_string, value_type: :string, required: true
 
       assert option.invalid?
-      assert option.errors.messages.include?(:value)
+      assert option.errors.messages.include?(:string_value)
     end
 
     test "set_value should update option" do

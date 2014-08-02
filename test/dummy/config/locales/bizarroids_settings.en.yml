@@ -12,6 +12,7 @@ en:
 
   bizarroids:
     settings:
+      name: Options
       option_updated: Option updated
       types:
         string: String
@@ -23,4 +24,5 @@ en:
         datetime: Date and Time
         file: File
     cancel: Cancel
+    edit: Edit
     save: Save

@@ -11,6 +11,11 @@ require 'bizarroids/settings/bizarroids_settings_option_uploader'
 
 module Bizarroids
   module Settings
+    # name prefix for ActiveRecord
+    def self.table_name_prefix
+      'bizarroids_settings_'
+    end
+
     VALUE_TYPES = %w(string integer float boolean text date datetime file).freeze
 
     def self.get key
