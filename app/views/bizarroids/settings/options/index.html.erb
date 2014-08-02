@@ -32,7 +32,7 @@
               <%= option.get_value %>
             <% end %>
           <% else %>
-            <em>Not set</em>
+            <em><%= bizarroids_t :not_set %></em>
           <% end %>
         </td>
         <td class='text-right'><%= bizarroids_edit_button bizarroids_settings_engine.edit_option_path(option) %></td>

@@ -10,6 +10,7 @@ ru:
         name: Название
         value_type: Тип
         value: Значение
+        remove_file_value: Удалить файл
 
   bizarroids:
     settings:
@@ -27,3 +28,4 @@ ru:
     cancel: Отмена
     edit: Редактировать
     save: Сохранить
+    not_set: Не установлено

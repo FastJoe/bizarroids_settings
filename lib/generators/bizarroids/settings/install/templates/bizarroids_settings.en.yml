@@ -9,6 +9,7 @@ en:
         name: Name
         value_type: Type
         value: Value
+        remove_file_value: Remove file
 
   bizarroids:
     settings:
@@ -26,3 +27,4 @@ en:
     cancel: Cancel
     edit: Edit
     save: Save
+    not_set: Not set

@@ -27,7 +27,7 @@ module Bizarroids::Settings
     end
 
     def permitted_params
-      params.permit(bizarroids_settings_option: Bizarroids::Settings::VALUE_TYPES.map {|x| :"#{x}_value"})
+      params.permit(bizarroids_settings_option: Bizarroids::Settings::VALUE_TYPES.map {|x| :"#{x}_value"} + [:remove_file_value])
     end
   end
 end
