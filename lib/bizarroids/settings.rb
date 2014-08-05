@@ -47,6 +47,9 @@ module Bizarroids
     mattr_accessor :files_storage_dir
     @@files_storage_dir = 'system/settings'
 
+    mattr_accessor :show_value_type
+    @@show_value_type = true
+
     def self.setup
       yield self
     end

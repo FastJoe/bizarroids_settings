@@ -5,9 +5,11 @@
 <table class='table table-bordered table-striped'>
   <thead>
     <tr>
-      <% %i(name value_type value).each do |attr_name| %>
-        <th><%= resource_class.human_attribute_name(attr_name) %></th>
+      <th><%= resource_class.human_attribute_name(:name) %></th>
+      <% if Bizarroids::Settings.show_value_type %>
+        <th><%= resource_class.human_attribute_name(:value_type) %></th>
       <% end %>
+      <th><%= resource_class.human_attribute_name(:value) %></th>
       <th>&nbsp;</th>
     </tr>
   </thead>
@@ -20,7 +22,9 @@
             <br/><em><%= option.description %></em>
           <% end %>
         </td>
-        <td><%= option.human_type %></td>
+        <% if Bizarroids::Settings.show_value_type %>
+          <td><%= option.human_type %></td>
+        <% end %>
         <td>
           <% if option.get_value.present? %>
             <% case option.value_type %>

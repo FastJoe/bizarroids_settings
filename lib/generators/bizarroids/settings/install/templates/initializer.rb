@@ -31,4 +31,7 @@ Bizarroids::Settings.setup do |config|
   # The parent controller all Settings controllers inherits from.
   # Defaults to ApplicationController. This should be set to a string.
   config.parent_controller = '::ApplicationController'
+
+  # Show value type column in admin panel
+  # config.show_value_type = true
 end
